@@ -1,0 +1,61 @@
+{% extends 'ecom/admin_base.html' %}
+{% load static %}
+{% block content %}
+
+
+<head>
+  <style media="screen">
+    .alert {
+      margin-left: 25%;
+      margin-right: 25%;
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .w3-panel p {
+      padding-top: 10px;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+</head>
+
+<br><br><br><br>
+<h2 style="text-align:center; color:blue;">{{invoice}} </h2>
+<hr>
+<div class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+ 
+<form action="notification" method="post">
+  <input type="hidden" name=invoice value={{invoice}} id="">
+    <input type="hidden" name=storename value={{storename}} id="">
+    <input type="hidden" name=name value={{name}} id="">
+
+  <input type="email" name=email value={{email}} id="">
+  <input type="tel" name="phone" value={{phone}} id="">
+  <button type="submit"> send notification</button>
+</form>
+
+{% endblock content %}
