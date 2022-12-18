@@ -25,7 +25,7 @@ def show_invoice(request,pk):
     MODE=request.COOKIES['MODE']
     MID= value=Merchant.objects.filter(KEY='MID').values()
     MID=MID[0].get("VALUE")
-    r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={
+    r = requests.post( "https://merchant-id.herokuapp.com", json={
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
@@ -41,7 +41,7 @@ def notification(request):
      MODE=request.COOKIES['MODE']
      MID= value=Merchant.objects.filter(KEY='MID').values()
      MID=MID[0].get("VALUE")
-     r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={
+     r = requests.post( "https://merchant-id.herokuapp.com", json={
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
@@ -70,7 +70,7 @@ def pay(request):
      MID=MID[0].get("VALUE")
 
      
-     r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={
+     r = requests.post( "https://merchant-id.herokuapp.com", json={
         
       "webhookUrl":request.POST.get('webhookUrl'),
        "MID":MID
@@ -102,7 +102,7 @@ def create_invice_view(request):
     MODE=Merchant.objects.filter(KEY='MODE').order_by('-id').values()
     MODE=MODE[0].get("VALUE")
      
-    r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={
+    r = requests.post( "https://merchant-id.herokuapp.com", json={
         
       "webhookUrl":request.POST.get('webhookUrl'),
        "MID":MID
@@ -122,7 +122,7 @@ def admin_products_view(request):
    MID= value=Merchant.objects.filter(KEY='MID').order_by('-id').values()
    MID=MID[0].get("VALUE")
    
-   r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={        
+   r = requests.post( "https://merchant-id.herokuapp.com", json={        
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
@@ -163,7 +163,7 @@ def admin_view_booking_view(request):
    
     MODE= Merchant.objects.filter(KEY='MODE').order_by('-id').values()
     MODE=MODE[0].get("VALUE")
-    r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={        
+    r = requests.post( "https://merchant-id.herokuapp.com", json={        
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
@@ -206,7 +206,7 @@ def webhook(request):
 
      MID= value=Merchant.objects.filter(KEY='MID').values()
      MID=MID[0].get("VALUE")
-     r = requests.post( "https://fddd-62-193-79-114.eu.ngrok.io/merchant-data", json={        
+     r = requests.post( "https://merchant-id.herokuapp.com", json={        
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
