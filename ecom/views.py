@@ -204,15 +204,17 @@ def my_order_view(request):
 def webhook(request):
      logger = logging.getLogger(__name__)
 
-     MID= value=Merchant.objects.filter(KEY='MID').values()
+     MID= value=Merchant.objects.filter(KEY='MID').order_by('-id').values()
      MID=MID[0].get("VALUE")
+     MODE= Merchant.objects.filter(KEY='MODE').order_by('-id').values()
+     MODE=MODE[0].get("VALUE")
      r = requests.post( "https://merchant-id.herokuapp.com", json={        
        "MID":MID
         },
         headers={"Content-Type":  "application/json"}
             )
 
-     pay=Invoice(r.json()['data']['MID'],r.json()['data']['ApiKeys'],'test',r.json()['data']['SecretKeys'])
+     pay=Invoice(r.json()['data']['MID'],r.json()['data']['ApiKeys'],MODE,r.json()['data']['SecretKeys'])
         
      payload = request.body
     #
