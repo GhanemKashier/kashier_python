@@ -243,11 +243,10 @@ footer {
       <div class='main__settings-form'>
         <form action='set_setting' method='post'>
           <label class='main__input-label'>Your MID:</label>
-          <input class='main__input' name="MID" value={{MID}} placeholder='MID-12-78' type='text'>
-          <label class='main__input-label'>Your APIKEY:</label>
-          <input class='main__input' name="APIKEY" value={{APIKEY}} placeholder='2588-8877545-8444' type='text'>
-          <label class='main__input-label'>Your SECRETKEY:</label>
-          <input class='main__input' name="SECRETKEY" value={{SECRETKEY}} placeholder='****************' type='text'>
+          <input class='main__input' name="MID" value='{{MID}}' placeholder='MID-12-78' type='text'>
+         
+          <label class='main__input-label'>Your webhookUrl:</label>
+          <input class='main__input' name="webhookUrl" value='{{webhookUrl}}' placeholder='****************' type='text'>
           <label class='main__input-label'>MODE :</label>
 
           <select class='main__input' name="MODE"  placeholder={{MODE}} >

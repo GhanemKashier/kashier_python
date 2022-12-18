@@ -14,3 +14,10 @@ class Feedback(models.Model):
     def __str__(self):
         return self.name
 
+
+class Merchant(models.Model):
+    KEY=models.CharField(max_length=40)
+    VALUE=models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.name

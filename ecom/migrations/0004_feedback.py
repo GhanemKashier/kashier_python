@@ -6,16 +6,17 @@ from django.conf import settings
 
 class Migration(migrations.Migration):
 
-  initial = True
+    dependencies = [
+       migrations.swappable_dependency(settings.AUTH_USER_MODEL),
 
-  dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
-  operations = [
+
+    operations = [
         migrations.CreateModel(
             name='Feedback',
             fields=[
                 ('name', models.CharField(max_length=40)),
-                ('feedback', models.JSONField()),         ],
+                ('feedback', models.JSONField()),
+            ],
         ),
     ]

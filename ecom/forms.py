@@ -9,3 +9,10 @@ class FeedbackForm(forms.ModelForm):
         model=models.Feedback
         fields=['name','feedback']
         form_feedback = TextField()
+
+
+class MerchantForm(forms.ModelForm):
+    class Meta:
+        model=models.Merchant
+        fields=['MID',]
+        form_merchant = TextField()
