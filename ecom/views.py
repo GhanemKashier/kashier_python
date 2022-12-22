@@ -34,7 +34,7 @@ def show_invoice(request,pk):
      pay=Invoice(MID,secretKey ,MODE,) 
     #  pay.get_invoice('INV-3552454483') pay.create_invoice(items,totalAmount,'818895','EGP')
      response=pay.get_invoice(pk) 
-     return HttpResponse(response)
+     
 
      return render(request,'ecom/admin_show_booking.html',{'response':response['response']['data']})
 
@@ -179,18 +179,16 @@ def my_order_view(request):
 def webhook(request):
      logger = logging.getLogger(__name__)
 
-     MID= value=Merchant.objects.filter(KEY='MID').order_by('-id').values()
+     MID= Merchant.objects.filter(KEY='MID').order_by('-id').values() 
      MID=MID[0].get("VALUE")
-     MODE= Merchant.objects.filter(KEY='MODE').order_by('-id').values()
+     MODE= value=Merchant.objects.filter(KEY='MODE').values()
      MODE=MODE[0].get("VALUE")
-     r = requests.post( "https://merchant-id.herokuapp.com/merchant-data", json={        
-       "MID":MID
-        },
-        headers={"Content-Type":  "application/json"}
-            )
+     totalAmount=0
+     secretKey=Merchant.objects.filter(KEY='secretKey').order_by('-id').values()
+     if secretKey:
+       secretKey=secretKey[0].get("VALUE")  
 
-     pay=Invoice(r.json()['data']['MID'],r.json()['data']['ApiKeys'],MODE,r.json()['data']['SecretKeys'])
-        
+     pay=Invoice(MID,secretKey ,MODE,)
      payload = request.body
     #
      data=json.loads(payload)
