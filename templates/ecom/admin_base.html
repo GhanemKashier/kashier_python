@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <style type="text/css">
+    .bs-example {
+      margin: 0px;
+
+    }
+
+    .navbar-brand {
+      font-size: 20px;
+      font-family: sans-serif;
+
+    }
+
+    .navbar-nav {
+      padding-inline: 35%;
+margin-inline: 20px;
+min-width: 100%;
+    font-size: 19px;
+          justify-content: space-around;
+
+    }
+        /*---------------------------------------
+           Social section
+        -----------------------------------------*/
+        footer {
+          padding: 0px 0px 0px 0px;
+          background-color: black;
+          margin: 0px;
+        }
+
+
+        #ftr {
+
+          padding: 20px;
+        }
+
+        .fa {
+
+          font-size: 23px;
+          width: 60px;
+          text-align: center;
+          text-decoration: none;
+          margin: 5px 2px;
+          border-radius: 50%;
+        }
+
+        .fa:hover {
+          opacity: 0.5;
+          text-decoration: none;
+        }
+
+        .fa-facebook {
+          background: #3B5998;
+          color: white;
+          margin-top: 30px;
+        }
+
+        .fa-whatsapp {
+          background: #25d366;
+          color: white;
+        }
+
+        .fa-twitter {
+          background: #55ACEE;
+          color: white;
+        }
+
+        .fa-instagram {
+          background: #125688;
+          color: white;
+        }
+
+        p {
+          text-align: center;
+
+        }
+        .nav-link{
+          color: #ffff !important;
+          
+  padding: 13px;
+        }
+        .active, .btn:hover {
+          background:#dfe0e5;
+  overflow:hidden;
+  border-left:2px solid #00f;
+  padding:8px;
+  
+}
+  </style>
+</head>
+
+<body>
+
+
+
+  <div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background:#000000;">
+      <a href="/" class="navbar-brand"></a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+        {% with request.resolver_match.url_name as url_name %}
+
+        <div class="navbar-nav">
+          <a href="/create-invice" class="nav-item nav-link {% if url_name == 'create-invice' %}active{% endif %}">create Invoices</a>
+          <a href="/list-invoice" class="nav-item nav-link {% if url_name == 'list-invoices' %}active{% endif %}">List Invoices</a>
+          <a href="/setting" class="nav-item nav-link {% if url_name == 'setting' %}active{% endif %}">settings</a>
+          <!-- <a href="/view-feedback" class="nav-item nav-link">Feedback</a> -->
+        </div>
+        {% endwith %}
+        <div class="navbar-nav navbar-right">
+          <!-- <a href="/logout" class="nav-item nav-link"> </a> -->
+        </div>
+
+      </div>
+    </nav>
+  </div>
+
+  <!-- content start-->
+  {% block content %}
+
+  
+
+  {% endblock content %}
+  
+  <!-- content end-->
+
+</body>
+</html>
