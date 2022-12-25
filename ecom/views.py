@@ -36,11 +36,10 @@ def show_invoice(request,pk):
     if webhookUrl:
         webhookUrl=webhookUrl[0].get("VALUE")
     settings= Invoice(MID,secretKey)
-    pay= Invoice(MID,secretKey)
     
-    response=pay.get_invoice(pk) 
-    # return HttpResponse(response)
-
+    response=settings.get_invoice(pk) 
+    if( 'error' in response.json()):
+        return HttpResponse(response)
     return render(request,'ecom/admin_show_booking.html',{'response':response.json()['response']['data']})
 
 def notification(request):
